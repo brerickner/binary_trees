@@ -8,8 +8,8 @@
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-	size_t lftHeight = 1;
-	size_t rtHeight = 1;
+	size_t lftHeight;
+	size_t rtHeight;
 
 
 	/* If tree is NULL, your function must return 0 */
@@ -25,14 +25,14 @@ size_t binary_tree_height(const binary_tree_t *tree)
 	/* of the left and right sub-trees. */
 
 	/* We can apply the definition of the height on the sub-trees now.*/
-	lftHeight = binary_tree_height(tree->left);
-	rtHeight = binary_tree_height(tree->right);
+	lftHeight = binary_tree_height(tree->left) + 1;
+	rtHeight = binary_tree_height(tree->right) + 1;
 
 	/* Find the height of both subtrees and use the larger one */
 	/* add 1 to it for the current node */
 	if (lftHeight > rtHeight)
-		return (lftHeight + 1);
-	return (rtHeight + 1);
+		return (lftHeight);
+	return (rtHeight);
 }
 
 /**
